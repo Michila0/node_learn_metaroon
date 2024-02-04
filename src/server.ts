@@ -1,9 +1,8 @@
 import express, {Express} from 'express'
 import itemRoutes from "./routes/item-routes";
-import {connectToMongoDB} from "./configs/mongodb";
 import dotenv from 'dotenv'
-import path from "path";
 import {Server} from "http";
+import path from "path";
 dotenv.config()
 
 const PORT = 5000
@@ -14,7 +13,7 @@ let server: Server
 app.use(express.json())
 
 // Serve static files from the "public" directory
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // routes
@@ -25,14 +24,11 @@ app.get('/', (req, res)=> {
 app.use('/api/v1/items', itemRoutes)
 
 // Start the express app
-connectToMongoDB('mongodb+srv://stoXmod:5VJbnUadD3lLZPJu@cluster0.avfm1yl.mongodb.net/test?retryWrites=true&w=majority').then(()=> {
-    console.log('✅ Mongodb Connected!')
+
     server = app.listen(PORT, ()=> {
         console.log(`🚀 Server is running on port ${PORT}`)
     })
-}).catch((ex)=> {
-    console.log('🔴 Connection failed with MongoDB!', ex)
-})
+
 
 export {app,server}
 

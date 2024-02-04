@@ -3,7 +3,7 @@ import {ItemController} from "../controllers/item-controller";
 
 const router = express.Router()
 
-router.post('/add-item', ItemController.createItem);
-router.get('/', ItemController.getAllItems);
+router.post('/add-item', () => {});
+router.get('/', () => {});
 
 export default router
