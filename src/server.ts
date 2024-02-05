@@ -34,11 +34,17 @@ const DB: DbUtil = new DbUtil({
     DATABASE: DbConfig.DB_DATABASE
 })
 
-// Start the express app
+DB.createConnection().then(() => {
+    console.log('✅ Connected successfully to the database')
+}).catch((ex) => {
+    console.error('🔴 Database connection unsuccessful!')
+})
 
-    server = app.listen(PORT, ()=> {
-        console.log(`🚀 Server is running on port ${PORT}`)
-    })
+// Start the express app
+//
+//     server = app.listen(PORT, ()=> {
+//         console.log(`🚀 Server is running on port ${PORT}`)
+//     })
 
 
 export {app,server}
