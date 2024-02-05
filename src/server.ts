@@ -3,6 +3,8 @@ import itemRoutes from "./routes/item-routes";
 import dotenv from 'dotenv'
 import {Server} from "http";
 import path from "path";
+import DbUtil from "./utils/db-util";
+import {DbConfig} from "./configs/db-config";
 dotenv.config()
 
 const PORT = 5000
@@ -22,6 +24,15 @@ app.get('/', (req, res)=> {
     // res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 app.use('/api/v1/items', itemRoutes)
+
+
+//Init DB
+const DB: DbUtil = new DbUtil({
+    HOST: DbConfig.DB_HOST,
+    USER: DbConfig.DB_USER,
+    PASSWORD: DbConfig.DB_PASSWORD,
+    DATABASE: DbConfig.DB_DATABASE
+})
 
 // Start the express app
 

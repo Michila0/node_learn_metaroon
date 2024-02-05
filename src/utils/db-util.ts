@@ -1,6 +1,6 @@
 import mysql from 'mysql2';
 import dotenv from 'dotenv'
-import {IMysqlConfig} from "../defenitions/interfaces/mysql-config";
+import {MysqlConfig} from "../defenitions/interfaces/mysql-config";
 dotenv.config()
 
 export default class DbUtil {
@@ -11,7 +11,7 @@ export default class DbUtil {
     private DATABASE: string | undefined;
     private connection: mysql.Connection | undefined;
 
-    constructor(private connectionConfig: IMysqlConfig) {
+    constructor(private connectionConfig: MysqlConfig) {
         this.HOST = connectionConfig.HOST;
         this.USER = connectionConfig.USER;
         this.PASSWORD = connectionConfig.PASSWORD;
