@@ -1,9 +1,9 @@
 import express from "express";
-import {ItemController} from "../controllers/item-controller";
+import {InternController} from "../controllers/intern-controller";
 
 const router = express.Router()
-
-router.post('/add-item', () => {});
+const internController = new InternController();
+router.post('/add-intern', internController.create);
 router.get('/', () => {});
 
 export default router

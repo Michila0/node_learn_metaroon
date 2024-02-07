@@ -1,6 +1,6 @@
 import {RowDataPacket} from "mysql2";
 
-export default interface Intern extends RowDataPacket{
+export default interface Interns extends RowDataPacket{
     Intern_ID?: number,
     First_Name?: string,
     Last_Name?: string,

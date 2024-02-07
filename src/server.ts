@@ -23,8 +23,7 @@ app.get('/', (req, res)=> {
     res.status(200).json({message: 'Hello Metaroon 2024!'})
     // res.sendFile(path.join(__dirname, 'public/index.html'));
 })
-app.use('/api/v1/items', itemRoutes)
-
+app.use('/api/v1/interns', itemRoutes)
 
 //Init DB
 const DB: DbUtil = new DbUtil({
@@ -35,16 +34,17 @@ const DB: DbUtil = new DbUtil({
 })
 
 DB.createConnection().then(() => {
-    console.log('✅ Connected successfully to the database')
+    console.log('✅ Connected successfully to the database');
+    server = app.listen(PORT, ()=> {
+        console.log(`🚀 Server is running on port ${PORT}`)
+    })
 }).catch((ex) => {
-    console.error('🔴 Database connection unsuccessful!')
+    console.error('🔴 Database connection unsuccessful!', ex)
 })
 
 // Start the express app
-//
-//     server = app.listen(PORT, ()=> {
-//         console.log(`🚀 Server is running on port ${PORT}`)
-//     })
+
+
 
 
 export {app,server}
