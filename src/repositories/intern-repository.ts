@@ -4,7 +4,7 @@ import mysql, {OkPacket} from "mysql2";
 import connection from '../db'
 
 
-class internRepository extends RepoBase<IInterns>{
+class InternRepository extends RepoBase<IInterns>{
 
     private connection: mysql.Connection | undefined
     constructor() {
@@ -58,4 +58,4 @@ class internRepository extends RepoBase<IInterns>{
     //Retrieve intern
 }
 
-export default internRepository;
+export const internRepository = new InternRepository()

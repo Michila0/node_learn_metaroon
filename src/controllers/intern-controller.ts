@@ -1,7 +1,8 @@
 import {Request,Response} from "express";
-import internRepository from "../repositories/intern-repository";
+import  { internRepository } from "../repositories/intern-repository";
 import IIntern from '../defenitions/interfaces/intern'
-import {getRepository} from "typeorm";
+// import {getRepository} from "typeorm";
+// import {InternEntity} from "../entities/intern-entity";
 
 export class InternController {
     async create(req:Request,res:Response){
@@ -12,8 +13,8 @@ export class InternController {
 
         try {
             const newIntern: IIntern = req.body
-            // const internRepository = getRepository()
-            const savedIntern = await internRepository.save(newIntern)
+            // const internRepository = getRepository(InternEntity)
+            const savedIntern =  internRepository.save(newIntern)
             res.status(200).json({message: 'Intern saved successfully', affectedRows: savedIntern})
         }catch (ex) {
             res.status(500).json({message: 'Error occurred', stack: ex})
