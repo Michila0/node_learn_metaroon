@@ -7,7 +7,7 @@ import DbUtil from "./utils/db-util";
 import {DbConfig} from "./configs/db-config";
 dotenv.config()
 
-const PORT = 5000
+const PORT = 9000
 const app = express()
 let server: Server
 
